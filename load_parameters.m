@@ -12,7 +12,7 @@ function [sim_parameters,ris_parameters] = load_parameters(codebook_type)
     sim_parameters.berror = zeros(numel(sim_parameters.snr_range),1);
     sim_parameters.serror = zeros(numel(sim_parameters.snr_range),1);
     sim_parameters.power_rx = zeros(numel(sim_parameters.snr_range),1);
-    sim_parameters.dp_channel_model = true;
+    sim_parameters.dp_channel_model = false;
     if sim_parameters.dp_channel_model
         sim_parameters.dp_channel_params.dlx = 0.5;
         sim_parameters.dp_channel_params.dly = 0.5;
@@ -26,7 +26,7 @@ function [sim_parameters,ris_parameters] = load_parameters(codebook_type)
     end
     sim_parameters.N0 = 10^(-1.5);
     sim_parameters.pl_model = "ETSI Near Field";
-    sim_parameters.codebook_type = codebook_type; % "SVD-Based" or "Type1"
+    sim_parameters.codebook_type = "Type1"; % "SVD-Based" or "Type1"
     sim_parameters.codebook_mode = 1;
     if sim_parameters.codebook_type == "Type1"
         sim_parameters.codebook = generate_codebook(sim_parameters);
